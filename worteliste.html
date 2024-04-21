@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>aprende aleman</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: Arial, sans-serif;
+            height: 90vh;
+            background-color: #f5f5f5;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+            height: 95vh;
+        }
+
+        #body {
+            display: flex;
+            justify-content: space-around;
+            background-color: #f0f0f0;
+            padding: 10px;
+            border-radius: 15px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        }
+            #palabraespanol, #palabraaleman {
+                flex: 1 1;
+                background-color: #f0f0f0;
+                padding: 10px;
+                border-radius: 15px;
+                
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            }
+
+            #palabraespanol div, #palabraaleman div {
+                background-color: #fff;
+                padding: 10px;
+                height: 8vh;
+                border-radius: 15px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+                margin: 5px;
+                text-align: center;
+                font-family: "Arial", sans-serif;
+                font-size: 18px;
+                font-weight: bold;
+                color: #0e0a0a;
+                align-items: center;
+                
+            }
+
+            #verbos {
+                height: 60vh;
+                display: flex;
+                justify-content: space-around;
+                background-color: #f0f0f0;
+                padding: 10px;
+                border-radius: 15px;
+                box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+            }
+        
+
+
+        
+        /**/
+        .btn{
+            
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>practica de aleman</h1>
+        
+    </header>
+
+    <div id="body">
+        <div class="verbo" >
+            <img src="" alt="lerner">
+            <button class="btn" onclick="verbo()">verbos</button>
+        </div>
+        <div>
+            <img src="" alt="lerner">
+            <button class="btn" onclick="adjetivos()">adjetivos</button>
+        </div>
+        <div>
+            <img src="" alt="lerner">
+            <button class="btn" onclick="sustantivos()">sustantivos</button>
+        </div>
+        <div>
+            <img src="" alt="lerner">
+            <button class="btn" onclick="advervios()">advervios</button>
+        </div>
+    </div>
+    <section class="listas-de-palabras" style="background: grey;">
+        <div id="verbos">
+        
+            <div id="palabraespanol"> 
+                <div id="p1">1</div>
+                <div id="p2">1</div>
+                <div id="p3">1</div>
+                <div id="p4">1</div>
+                <div id="p5">1</div>
+            </div>
+            <div id="palabraaleman">
+                <div id="p11">2</div>
+                <div id="p12">2</div>
+                <div id="p13">2</div>
+                <div id="p14">2</div>
+                <div id="p15">2</div>
+            </div>
+        </div>
+    </section>
+
+
+    <button type="button" onclick="asignarpalabra()" class="btn">Generar Palabra</button>
+    <button type="button" onclick="mostrarConjugaciones()" class="btn">Mostrar Conjugaciones</button>
+    
+    <script>
+        
+        var lmaterno= [];
+        var lobjetivo= [];
+        
+        const verbos160= {
+            es:[
+                "haber/ser", "tener", "llegar a ser", "poder", "deber", "decir", "hacer", "dar", "venir", "deber", "querer", "ir", "saber", "ver", "dejar", "estar de pie", "encontrar", "quedarse", "estar acostado", "llamarse", "pensar", "tomar", "hacer", "tener permiso", "creer", "sentir", "hablar", "traer", "vivir", "preguntar", "ayudar", "jugar", "trabajar", "seguir", "hablar", "escuchar", "conducir", "escribir", "leer", "correr", "tirar", "poner", "recibir", "comprar", "buscar", "olvidar", "perder", "pagar", "costar", "comer", "beber", "dormir", "sentarse", "caer", "subir", "esperar", "pasar", "aprender", "entender", "darse cuenta", "recordar", "gustar", "amar", "odiar", "necesitar", "intentar", "lograr", "explicar", "mostrar", "tocar", "oler", "saborear", "tocar", "bailar", "cantar", "pintar", "dibujar", "hacer manualidades", "coser", "tejer", "hacer ganchillo", "cocinar", "hornear", "asar", "hacer a la parrilla", "cortar", "picar", "pelar", "mezclar", "revolver", "agitar", "verter", "remojar", "escurrir", "sazonar", "probar", "tragar", "masticar", "respirar", "abrir", "cerrar", "desechar", "guardar", "reír", "llorar", "sonreír", "gritar", "trepar", "saltar", "correr", "hacer senderismo", "nadar", "bucear", "navegar", "remar", "montar a caballo", "volar", "deslizarse", "deslizarse", "rodar", "lanzar", "atrapar", "cazar", "disparar", "encontrar", "abrazar", "besar", "golpear", "patear", "boxear", "arañar", "morder", "lamer", "cavar", "construir", "arreglar", "romper", "perforar", "frotar", "amasar", "secar", "lavar", "limpiar", "aspirar", "pulir", "imprimir", "pegar", "atar", "doblar", "enhebrar", "tejer", "hacer nudos", "hilar", "forjar", "tallar", "serrar", "cepillar", "lijar", "limar", "barnizar", "pintar", "barnizar", "construir", "construir muros", "enlucir", "alicatar", "empapelar"
+            ],
+            de:[
+                "sein", "haben", "werden", "können", "müssen", "sagen", "machen", "geben", "kommen", "sollen", "wollen", "gehen", "wissen", "sehen", "lassen", "stehen", "finden", "bleiben", "liegen", "heißen", "denken", "nehmen", "tun", "dürfen", "glauben", "fühlen", "sprechen", "bringen", "leben", "fragen", "helfen", "spielen", "arbeiten", "folgen", "reden", "hören", "fahren", "schreiben", "lesen", "laufen", "ziehen", "setzen", "bekommen", "kaufen", "suchen", "vergessen", "verlieren", "zahlen", "kosten", "essen", "trinken", "schlafen", "sitzen", "fallen", "steigen", "warten", "passieren", "lernen", "verstehen", "merken", "erinnern", "mögen", "lieben", "hassen", "brauchen", "versuchen", "schaffen", "erklären", "zeigen", "anfassen", "riechen", "schmecken", "berühren", "tanzen", "singen", "malen", "zeichnen", "basteln", "nähen", "stricken", "häkeln", "kochen", "backen", "braten", "grillen", "schneiden", "hacken", "schälen", "mixen", "rühren", "schütteln", "gießen", "tränken", "abtropfen", "würzen", "probieren", "schlucken", "kauen", "atmen", "öffnen", "schließen", "wegwerfen", "speichern", "lachen", "weinen", "lächeln", "schreien", "klettern", "springen", "rennen", "wandern", "schwimmen", "tauchen", "segeln", "rudern", "reiten", "fliegen", "rutschen", "gleiten", "rollen", "werfen", "fangen", "jagen", "schießen", "treffen", "umarmen", "küssen", "schlagen", "treten", "boxen", "kratzen", "beißen", "lecken", "graben", "bauen", "reparieren", "brechen", "bohren", "reiben", "kneten", "trocknen", "waschen", "putzen", "saugen", "polieren", "drucken", "kleben", "binden", "falten", "fädeln", "weben", "knüpfen", "spinnen", "schmieden", "schnitzen", "sägen", "hobeln", "schleifen", "feilen", "beizen", "anstreichen", "lasieren", "zimmern", "mauern", "verputzen", "fliesen", "tapezieren"
+            ]
+        }
+        const advervio= {
+            es:[
+                "ahora", "aquí", "entonces", "allí", "siempre", "ya", "todavía", "así", "tal vez", "a menudo", "realmente", "justo", "bien", "muy", "sin embargo", "pronto", "también", "incluso", "casi", "seguro", "bastante", "hoy", "a veces", "nunca", "apenas", "una vez", "poco", "de nuevo", "ayer", "finalmente", "exactamente", "mañana", "gustosamente", "primero", "afuera", "por lo tanto", "por último", "en realidad", "mientras tanto", "durante mucho tiempo", "seguramente", "suficiente", "de repente", "de alguna manera", "hacia aquí", "aproximadamente", "abajo", "por la mañana", "en aquel entonces", "de lo contrario", "recientemente", "temprano", "verdaderamente", "diariamente", "detrás", "atrás", "más a menudo", "después", "de hecho", "completamente", "en vano", "desde lejos", "por mí", "sin embargo", "abajo", "junto con", "hacia un lado", "ahora", "recientemente", "arriba", "alrededor", "últimamente", "hace mucho tiempo", "sin embargo", "recientemente", "una vez", "igualmente", "siempre", "a tiempo", "a veces", "mediante eso", "de ahí", "próximamente", "por lo tanto", "esta vez", "encima", "después de eso", "entre", "mientras tanto", "después de eso", "al lado", "después", "antes", "de este lado", "en algún momento", "dentro de", "fuera", "luego de eso"
+            ],
+            de:[
+                "jetzt", "hier", "dann", "dort", "immer", "schon", "noch", "so", "vielleicht", "oft", "wirklich", "gerade", "gut", "sehr", "doch", "bald", "auch", "gar", "fast", "sicher", "ziemlich", "heute", "manchmal", "niemals", "kaum", "einmal", "wenig", "wieder", "gestern", "endlich", "genau", "morgen", "gerne", "erst", "draußen", "deshalb", "zuletzt", "eigentlich", "dabei", "lange", "bestimmt", "genug", "plötzlich", "irgendwie", "hierher", "etwa", "herunter", "morgens", "damals", "sonst", "soeben", "früh", "wahrhaftig", "täglich", "hinterher", "hinten", "öfter", "nachher", "tatsächlich", "vollkommen", "umsonst", "weither", "meinetwegen", "trotzdem", "unten", "samt", "seitwärts", "nunmehr", "neulich", "oben", "herum", "letzthin", "längst", "gleichwohl", "kürzlich", "amal", "gleichsam", "allemal", "beizeiten", "bisweilen", "dadurch", "daraus", "demnächst", "daher", "diesmal", "drauf", "daraufhin", "dazwischen", "derweil", "darnach", "daneben", "danach", "davor", "diesseits", "irgendwann", "innerhalb", "außen", "draufhin"
+            ]
+        }
+        const sustantivos1000 = {
+            es: [
+                // 150 sustantivos en español
+                "la tarde", "la dirección", "la oferta", "el miedo", "la respuesta", "la farmacia", "la manzana", "el trabajo", "el ojo", "la excursión", "el coche", "la panadería", "la estación de tren", "la pelota", "el árbol", "la pierna", "la flor", "el suelo", "el barco", "el libro", "la oficina", "el autobús", "el café", "la fecha", "el techo", "el martes", "la lata", "la impresora", "la esquina", "el correo electrónico", "el huevo", "el final", "el éxito", "la fábrica", "la familia", "la ventana", "el dedo", "la pregunta", "el amigo", "el desayuno", "el equipo de fútbol", "el partido de fútbol", "el garaje", "el nacimiento", "el cumpleaños", "el dinero", "la historia", "el sabor", "el regalo", "la cara", "la salud", "la guitarra", "las felicitaciones", "el saludo", "el pelo", "el cuello", "el teléfono móvil", "el bolso", "el cielo", "el hobby", "el hotel", "el año", "enero", "los vaqueros", "julio", "la cámara", "el cine", "el vestido", "la maleta", "la tarjeta de crédito", "el pastel", "el cliente", "la lámpara", "el paisaje", "la farola", "el profesor", "la pasión", "la vida", "la canción", "la luz", "el amor", "el agujero", "el aire", "la medida", "el muro", "mayo", "el gorro", "la cantidad", "el mar", "la feria", "el mediodía", "el mes", "el gorro", "el museo", "el nombre", "la noche", "la nariz", "la red", "la nota", "el número", "la fruta", "la oreja", "octubre", "el paquete", "el parque", "el caballo", "el lugar", "el póster", "el precio", "el problema", "el producto", "el examen", "la rueda", "la lluvia", "el restaurante", "la receta", "el viaje", "la falda", "la cosa", "el sábado", "la arena", "el paraguas", "el barco", "el jamón", "la nieve", "el chocolate", "el zapato", "el estudiante", "el cerdo", "la hermana", "el lago", "la página", "septiembre", "el esquí", "el verano", "el sol", "el domingo", "el juego", "el deporte", "el estado", "el filete", "la ciudad", "la piedra", "la bota", "la playa", "el estudio", "la silla", "el taxi", "el té", "el teléfono", "la cita", "el animal", "el billete", "la puerta", "el turista", "el entrenamiento", "la puerta", "la camiseta", "el tipo", "la orilla", "el reloj", "las vacaciones", "el padre", "la bicicleta", "el medio de transporte", "el embalaje", "el seguro", "la villa", "el visado", "el aperitivo", "la pared", "el almacén", "la ropa", "el agua", "el tiempo", "el fin de semana", "el lugar de residencia", "el apartamento", "la nube", "la semana", "la salchicha", "el número", "el tiempo", "el objetivo", "la habitación", "el zoológico", "el azúcar", "el centro", "el periódico", "el limón", "la lengua", "el futuro", "el certificado", "el cigarrillo", "el tren", "la cebolla", "la cena", "la aventura", "el examen de selectividad", "el departamento", "la dirección", "el mono", "la agencia", "el álbum", "la avenida", "la alergia", "el país alpino", "el alfabeto", "la pesadilla", "el semáforo", "la vista", "la oferta", "el ataque", "el sentimiento de miedo", "el ancla", "la vista", "la librería de segunda mano", "el traje", "la manzana", "el acuario", "el brazo", "el reloj de pulsera", "el tipo", "el asilo", "la tarea", "la atención", "el ojo", "el momento", "la formación", "la excursión", "la salida", "el documento de identidad", "la selección", "la autopista", "la tarjeta de autógrafos", "la marca de automóvil", "la carrera de coches", "la concesionaria de automóviles", "el arroyo", "el horno", "la panadería", "la bañera", "la toalla de baño", "el andén", "el balcón", "el plátano", "el banco", "el billete de banco", "la cuenta bancaria", "la banca", "el bar", "el dinero en efectivo", "la barba", "la base", "la construcción", "la granjera", "la granja", "el árbol", "la pieza", "el funcionario", "la respuesta", "el editor", "el ritmo", "la necesidad", "la necesidad", "la afectación", "el talento", "la justificación", "la carta de presentación", "el recipiente", "la autoridad", "el tratamiento", "la afirmación", "el ejemplo", "el conocido", "la iluminación", "la recompensa", "la ventilación", "la gasolina", "la consulta", "el informe", "la vida laboral", "el contacto", "el campo profesional", "el empleo", "el certificado", "la decisión", "el propietario", "la confirmación", "los cubiertos", "la cantidad", "el tutor", "el cuidado", "la población", "la relación", "la prueba", "la solicitud", "la carta de solicitud", "los documentos de solicitud", "la biblioteca", "la imagen", "la pantalla", "la pera", "la solicitud", "la mirada", "el bloque", "la sangre", "el suelo", "el bono", "la bolsa", "el borde", "la sartén", "el vestido de novia", "el puré", "la carta", "el buzón", "el sobre", "las gafas", "el bollo", "el hermano", "el puente", "el pecho", "la librería", "la letra (del alfabeto)", "el presupuesto", "la lata", "la plancha", "el clip", "el edificio de oficinas", "el arbusto", "la mantequilla", "el cappuccino", "el champán", "el caos", "el carisma", "la oportunidad", "la jefa", "el chile", "el cloro", "el coro", "el árbol de Navidad", "la crema", "el croissant", "la salchicha al curry", "la terraza en la azotea", "el techo", "el perro salchicha", "el vapor", "la fecha", "el pulgar", "el debut", "el techo", "la decoración", "el desodorante", "la sucursal", "el diseño", "la ropa interior", "el detective", "diciembre", "la dieta", "el diafragma", "la poesía", "la diferencia", "el reloj digital", "el diploma", "la dirección", "el director", "la pantalla", "el DJ", "el doctor", "la documentación", "el dominio", "jueves", "el pueblo", "la lata", "la fruta del dragón", "el drama", "la rotación", "la impresora", "los alrededores", "el duelo", "el aroma", "la estupidez", "la esquina", "el matrimonio", "la pareja casada", "la honestidad", "el roble", "la lagartija", "la proteína", "el unicornio", "la invitación", "el mobiliario", "el ingreso", "la tabla de multiplicar", "la invasión", "la soledad", "la evaluación", "la comprensión", "la objeción", "la entrada", "la habitación individual", "la entrada", "la heladería", "la heladería", "la vanidad", "la característica", "la prisa", "el centro comercial", "el habitante", "el consentimiento", "la vanidad", "la aversión", "el alce", "la electricidad", "el elemento", "la reunión de padres", "la paternidad", "el progenitor", "el esmalte", "el destinatario", "el compromiso", "la nieta", "la enzima", "el guisante", "la planta baja", "el cacahuete", "la conexión a tierra", "la aparición", "la expectativa", "la educación", "el truco mnemotécnico", "la comida", "el vinagre", "la planta", "el búho", "el experimento", "la experiencia", "el experto", "la expedición", "la fábrica", "la habilidad", "el conductor", "el vehículo", "la familia", "la fantasía", "la fantasía", "el color", "el barril", "la fachada", "el fascinante", "la pluma", "la retroalimentación", "la celebración", "la cobardía", "el enemigo", "el campo", "la roca", "el control remoto", "la televisión", "la nostalgia de viajar", "la habilidad", "la fiesta", "la fortaleza", "el fuego", "el abeto", "la figura", "el plato de pescado", "el estanque de peces", "el gimnasio", "el abridor de botellas", "la carne", "la línea de montaje", "la flauta", "el avión", "la orilla del río", "el río", "la marea", "el potro", "la consecuencia", "el secador de pelo", "la foto", "el fotógrafo", "la fotografía", "el álbum de fotos", "el carguero", "la señorita", "el francés (idioma)", "el amigo", "la amistad", "la alegría", "la paz", "el cementerio", "el frisbee", "el peinado", "la primavera", "la primavera", "la fruta", "el desayuno", "la visita guiada", "el carné de conducir", "la abundancia", "el fundamento", "el silencio de radio", "la zona peatonal", "el partido de fútbol", "el peatón", "la galaxia", "la galería", "la margarita", "el garaje", "el guardarropa", "el jardín", "el acelerador", "la posada", "la pastelería", "el nacimiento", "la fiesta de cumpleaños", "el regalo de cumpleaños", "la paciencia", "la prisión", "el favor", "el sentimiento", "el intercomunicador", "el espíritu", "el dinero", "el terreno", "la validez", "la pintura", "el huerto", "la verdura", "el general", "el genio", "la ingeniería genética", "el caballero", "el rifle", "el peso", "el hábito", "el brillo", "el vaso", "la vía", "la suerte", "el juego de azar", "la gracia", "el pez dorado", "el servicio religioso", "la cocina gourmet", "la tumba", "el tamaño", "el rencor", "la moneda de diez céntimos", "el verde", "el grupo pequeño", "la base", "el plano", "el grupo", "la foto de grupo", "el grano", "el saludo", "el fundador", "el gulash", "el crédito", "la gimnasia", "la ginecología", "el talón", "las hojuelas de avena", "el puerto", "el gallo", "el filete de pollo", "la sala", "la parada", "el martillo", "la mano", "el teléfono móvil", "el número de teléfono móvil", "el trabajo manual", "la toalla", "el oficio", "el número de teléfono móvil", "la armonía", "el pelo", "el spray para el cabello", "la dureza", "la avellana", "la capital", "la estación principal de trenes", "el plato principal", "el médico de cabecera", "la casa flotante", "el remedio casero", "el número de la casa", "el conserje", "la piel", "la partera", "el lucio", "la curación", "la patria", "la ciudad natal", "el radiador", "la camisa", "el semental", "el tiempo de otoño", "la mansión", "el corazón", "la cordialidad", "la ayuda", "la cama con dosel", "la frambuesa", "la ejecución", "la indicación", "la boda", "el patio", "la esperanza", "el taburete", "la altura", "el sistema de cuevas", "la audición", "el hotel", "la gallina", "la correa para perros", "el collar de perro", "la cabaña", "el iglú", "la ilusión", "la inflación", "el interior", "el instrumento", "el internista", "el internet", "la interpretación", "el habitante de la isla", "la inspiración", "la entrevista", "la zona íntima", "el inventario", "la inversión", "el aislamiento", "la estación del año", "el siglo", "el cambio de siglo", "enero", "el japonés (idioma)", "el jazmín", "el más allá", "el yogur", "el jogging", "el yogur", "el comodín", "el periodista", "el diario", "la juventud", "junio", "la cría", "el soltero", "la virgen", "la yurta", "el cable", "la jaula", "el emperador", "el cactus", "el frío", "el fuego de chimenea", "el luchador", "la jarra", "la capacidad", "el capítulo", "la cápsula", "el carrusel", "el casino", "el queso", "el casete", "el cajón", "el gato", "la categoría", "el gatito", "la garganta", "la galleta", "la lata de galletas", "las migas de galleta", "la mezcla de galletas", "la barra de galleta", "el sótano", "el sótano", "el camarero", "el lagar", "la cadena", "el pino", "la cereza", "la caja", "el cojín", "la cosquilla", "el sonido", "la claridad", "la clase", "el clásico", "el examen", "la garra", "el clima", "la rodilla", "el hueso", "el nudo", "el libro de cocina", "la olla", "la colisión", "el rey", "el reino", "la competencia", "el concepto", "la cuenta", "la conversación", "la granulación", "el cuerpo", "la cesta", "el disfraz", "el vehículo de motor", "el combustible", "la garra", "el arañazo", "la creatividad", "la cruz", "la península de Crimea", "el thriller", "la crisis", "la bola de cristal", "la corona", "la costra", "la cocina", "los utensilios de cocina", "la vaca", "la cultura", "el cliente", "el servicio al cliente", "el curso de arte", "el comerciante de arte", "la obra de arte", "la exposición de arte", "el plástico", "el cobre", "la curva", "la carroza", "la costa", "el trabajo de laboratorio", "el laboratorio", "la tienda", "el hurto en tienda", "la estación de carga", "el almacén", "la lámpara", "el paisaje", "la pintura de paisaje", "el compatriota", "el país", "el mapa", "el parlamento regional", "la agricultura", "los compatriotas", "el portátil", "el vicio", "el camión", "el poste de luz", "la pasarela", "la carrera", "el altavoz", "la sonrisa", "el hígado", "el ser vivo", "la esperanza de vida", "los alimentos", "la calidad de vida", "el seguro de vida", "el vacío", "la conversación de capacitación", "el profesor", "la pasión", "la cuerda", "el agua del grifo", "el rendimiento", "el lema", "la dirección", "la guía", "la corrección de pruebas", "la lectura", "la vértebra lumbar", "el volante", "la luminaria", "el letrero luminoso", "la luz", "la cadena de luces", "el sable de luz", "el hobby", "el poema de amor", "el amante", "el amor", "la disolución", "la canción", "la entrega", "la mentira", "el aire", "el dirigible", "la contaminación del aire", "la resistencia del aire", "la fuerza aérea", "el colchón de aire", "la mentira", "el mentiroso", "el deseo", "el estómago", "el campo magnético", "el magnetismo", "la comida", "mayo", "la ponche de mayo", "la pintura", "el pintor", "la pintura", "el libro para colorear", "el pintor", "la mamografía", "el mandato", "la mandarina", "el hombre", "el equipo", "el cuento de hadas", "el margen", "el mercado", "la marca", "el puesto de mercado", "el martini", "la máquina", "el masajista", "la masajista", "el masaje", "el material", "las matemáticas", "la funda del colchón", "la boca (de un animal)", "el ratón", "el clic del ratón", "la alfombrilla del ratón", "la medalla", "los medios", "los medicamentos", "la medicina", "el producto médico", "el medicamento", "el nivel del mar", "el mar", "el conejillo de indias", "el agua de mar", "el valor añadido", "la casa de varias familias", "la harina", "la casa de varias generaciones", "la habitación multiusos", "la milla", "el campeonato", "la cantidad", "el ser humano", "el comedor universitario", "el menú", "el menú", "el mentor", "la feria", "el bloque de cuchillos", "el metal", "la metamorfosis", "el método", "el metro", "el microchip", "el microondas", "la leche", "el café con leche", "el batido de leche", "la Vía Láctea", "la suavidad", "el ejército", "el millón", "la minoría", "el mineral", "el agua mineral", "el menos", "el minuto", "el abuso", "la monstruosidad", "el contratiempo", "la misión", "la compañera de habitación", "la compasión", "el centro", "el centro", "el mensaje", "la colaboración", "la tienda de muebles", "la gaviota", "el momento", "la luz de la luna", "lunes", "la mañana", "el motor", "el molino", "el muesli", "la visita al museo", "la música", "el músico", "el gorro", "el vecindario", "el vecino", "la tutoría", "la noche", "el club nocturno", "la vida nocturna", "el silencio de la noche", "el postre", "el mensaje", "las noticias", "la cercanía", "las uñas", "el nombre", "la placa de identificación", "la cicatriz", "la naturaleza", "la catástrofe natural", "la navegación", "la red", "la curiosidad", "el nivel", "el alimento", "el cuaderno de notas", "la llamada de emergencia", "noviembre", "el fideo", "el animal de granja", "el oasis", "la fruta", "la escuela secundaria", "el piso superior", "los muslos", "el ciclo superior", "la autoridad", "la oreja", "el aceite", "el público", "la apertura", "la revelación", "el horno", "el desmayo", "el festival de octubre", "el festival de octubre", "las aceitunas", "el tío", "la ópera", "la ópera", "la opereta", "las naranjas", "el orden", "la orquesta", "el órgano", "la orientación", "el lugar", "la Pascua", "la Pascua", "los conejos de Pascua", "el mar Báltico", "la Pascua", "la ovación", "el palacio", "la palmera", "el palacio", "la avería", "el loro", "la papelera", "el papel", "el pimiento", "el desfile", "la perfumería", "el parque", "el estacionamiento", "la fiesta", "la patente", "el ahijado", "la pausa", "el babuino", "el caballo", "el deber", "la curita", "el cuidado", "la instalación de cuidado", "el deber", "la pimienta", "el caballo", "la planta", "la plantación", "el piloto", "la piloto", "la píldora", "la cerveza clara", "el bar", "la pizza"
+                // ...
+            ],
+            de: [
+                // 150 sustantivos en alemán
+                "der Abend", "die Adresse", "das Angebot", "die Angst", "die Antwort", "die Apotheke", "der Apfel", "die Arbeit", "das Auge", "der Ausflug", "das Auto", "die Bäckerei", "der Bahnhof", "der Ball", "der Baum", "das Bein", "die Blume", "der Boden", "das Boot", "das Buch", "das Büro", "der Bus", "das Café", "das Datum", "die Decke", "der Dienstag", "die Dose", "der Drucker", "die Ecke", "die E-Mail", "das Ei", "das Ende", "der Erfolg", "die Fabrik", "die Familie", "das Fenster", "der Finger", "die Frage", "der Freund", "das Frühstück", "die Fußballmannschaft", "das Fußballspiel", "die Garage", "die Geburt", "der Geburtstag", "das Geld", "die Geschichte", "der Geschmack", "das Geschenk", "das Gesicht", "die Gesundheit", "die Gitarre", "die Glückwünsche", "der Gruß", "das Haar", "der Hals", "das Handy", "die Handtasche", "der Himmel", "das Hobby", "das Hotel", "das Jahr", "der Januar", "die Jeans", "der Juli", "die Kamera", "das Kino", "das Kleid", "der Koffer", "die Kreditkarte", "der Kuchen", "der Kunde", "die Lampe", "die Landschaft", "die Laterne", "der Lehrer", "die Leidenschaft", "das Leben", "das Lied", "das Licht", "die Liebe", "das Loch", "die Luft", "das Maß", "die Mauer", "der Mai", "die Mütze", "die Menge", "das Meer", "die Messe", "der Mittag", "der Monat", "die Mütze", "das Museum", "der Name", "die Nacht", "die Nase", "das Netz", "die Notiz", "die Nummer", "das Obst", "das Ohr", "der Oktober", "das Paket", "der Park", "das Pferd", "der Platz", "das Poster", "der Preis", "das Problem", "das Produkt", "die Prüfung", "das Rad", "der Regen", "das Restaurant", "das Rezept", "die Reise", "der Rock", "die Sache", "der Samstag", "der Sand", "der Schirm", "das Schiff", "der Schinken", "der Schnee", "die Schokolade", "der Schuh", "der Schüler", "das Schwein", "die Schwester", "der See", "die Seite", "der September", "der Ski", "der Sommer", "die Sonne", "der Sonntag", "das Spiel", "der Sport", "der Staat", "das Steak", "die Stadt", "der Stein", "der Stiefel", "der Strand", "das Studio", "der Stuhl", "das Taxi", "der Tee", "das Telefon", "der Termin", "das Tier", "das Ticket", "das Tor", "der Tourist", "das Training", "die Tür", "das T-Shirt", "der Typ", "das Ufer", "die Uhr", "der Urlaub", "der Vater", "das Velo", "das Verkehrsmittel", "die Verpackung", "die Versicherung", "die Villa", "das Visum", "die Vorspeise", "die Wand", "das Warenhaus", "die Wäsche", "das Wasser", "das Wetter", "das Wochenende", "der Wohnort", "die Wohnung", "die Wolke", "die Woche", "die Wurst", "die Zahl", "die Zeit", "das Ziel", "das Zimmer", "der Zoo", "der Zucker", "das Zentrum", "die Zeitung", "die Zitrone", "die Zunge", "die Zukunft", "das Zeugnis", "die Zigarette", "der Zug", "die Zwiebel", "das Abendessen", "das Abenteuer", "das Abitur", "die Abteilung", "die Adresse", "der Affe", "die Agentur", "das Album", "die Allee", "die Allergie", "das Alpenland", "das Alphabet", "der Alptraum", "die Ampel", "der Anblick", "das Angebot", "der Angriff", "das Angstgefühl", "der Anker", "die Ansicht", "das Antiquariat", "der Anzug", "der Apfel", "das Aquarium", "der Arm", "die Armbanduhr", "die Art", "das Asyl", "die Aufgabe", "die Aufmerksamkeit", "das Auge", "der Augenblick", "die Ausbildung", "der Ausflug", "der Ausgang", "der Ausweis", "die Auswahl", "die Autobahn", "die Autogrammkarte", "die Automarke", "das Autorennen", "das Autohaus", "der Bach", "der Backofen", "die Bäckerei", "die Badewanne", "das Badetuch", "das Bahnsteig", "der Balkon", "die Banane", "die Bank", "die Banknote", "das Bankkonto", "das Bankwesen", "die Bar", "das Bargeld", "der Bart", "die Basis", "der Bau", "die Bäuerin", "das Bauernhaus", "der Baum", "das Bauteil", "der Beamte", "die Beantwortung", "der Bearbeiter", "der Beat", "der Bedarf", "das Bedürfnis", "die Beeinträchtigung", "die Begabung", "die Begründung", "das Begleitschreiben", "der Behälter", "das Behörde", "die Behandlung", "die Behauptung", "das Beispiel", "die Bekanntschaft", "die Beleuchtung", "die Belohnung", "die Belüftung", "das Benzin", "die Beratung", "der Bericht", "das Berufsleben", "die Berührung", "das Berufsfeld", "die Beschäftigung", "die Bescheinigung", "der Beschluss", "der Besitzer", "die Bestätigung", "das Besteck", "der Betrag", "der Betreuer", "die Betreuung", "die Bevölkerung", "die Beziehung", "der Beweis", "die Bewerbung", "das Bewerbungsschreiben", "die Bewerbungsunterlagen", "die Bibliothek", "das Bild", "der Bildschirm", "die Birne", "die Bitte", "der Blick", "der Block", "das Blut", "der Boden", "der Bonus", "die Börse", "das Bord", "die Bratpfanne", "das Brautkleid", "der Brei", "der Brief", "der Briefkasten", "der Briefumschlag", "die Brille", "das Brötchen", "der Bruder", "die Brücke", "die Brust", "die Buchhandlung", "das Buchstaben", "das Budget", "die Büchse", "das Bügeleisen", "die Büroklammer", "das Bürogebäude", "der Busch", "die Butter", "der Cappuccino", "der Champagner", "das Chaos", "das Charisma", "die Chance", "die Chefin", "die Chilischote", "das Chlor", "das Chor", "der Christbaum", "die Creme", "das Croissant", "die Currywurst", "die Dachterrasse", "das Dach", "der Dackel", "der Dampf", "das Datum", "der Daumen", "das Debüt", "die Decke", "die Dekoration", "der Deodorant", "die Dependance", "das Design", "die Dessous", "der Detektiv", "der Dezember", "die Diät", "das Diaphragma", "die Dichtung", "die Differenz", "die Digitaluhr", "das Diplom", "die Direktion", "der Direktor", "das Display", "der DJ", "der Doktor", "die Dokumentation", "die Domäne", "der Donnerstag", "das Dorf", "die Dose", "die Drachenfrucht", "das Drama", "die Drehung", "der Drucker", "das Drumherum", "das Duell", "der Duft", "die Dummheit", "die Ecke", "die Ehe", "das Ehepaar", "die Ehrlichkeit", "die Eiche", "die Eidechse", "das Eiweiß", "das Einhorn", "die Einladung", "die Einrichtung", "das Einkommen", "das Einmaleins", "der Einmarsch", "die Einsamkeit", "die Einschätzung", "die Einsicht", "der Einspruch", "die Eintrittskarte", "das Einzelzimmer", "der Einzug", "die Eisdiele", "die Eisdiele", "die Eitelkeit", "die Eigenschaft", "die Eile", "das Einkaufszentrum", "der Einwohner", "die Einwilligung", "die Eitelkeit", "der Ekel", "der Elch", "die Elektrizität", "das Element", "der Elternabend", "die Elternschaft", "der Elternteil", "die Emaille", "der Empfänger", "das Engagement", "die Enkelin", "das Enzym", "die Erbse", "das Erdgeschoss", "die Erdnuss", "die Erdung", "die Erscheinung", "die Erwartung", "die Erziehung", "die Eselsbrücke", "das Essen", "der Essig", "die Etage", "die Eule", "das Experiment", "die Expertise", "der Experte", "die Expedition", "die Fabrik", "die Fähigkeit", "der Fahrer", "das Fahrzeug", "die Familie", "der Fantasie", "die Fantasie", "die Farbe", "das Fass", "die Fassade", "das Faszinosum", "die Feder", "das Feedback", "die Feier", "die Feigheit", "der Feind", "das Feld", "der Felsen", "die Fernbedienung", "das Fernsehen", "die Fernweh", "die Fertigkeit", "das Fest", "die Festung", "das Feuer", "die Fichte", "die Figur", "das Fischgericht", "der Fischteich", "das Fitnessstudio", "der Flaschenöffner", "das Fleisch", "das Fließband", "die Flöte", "das Flugzeug", "das Flussufer", "der Fluss", "die Flut", "das Fohlen", "die Folge", "der Fön", "das Foto", "der Fotograf", "die Fotografie", "das Fotoalbum", "der Frachter", "das Fräulein", "das Französisch", "der Freund", "die Freundschaft", "die Freude", "der Frieden", "das Friedhof", "die Frisbee", "die Frisur", "das Frühjahr", "der Frühling", "die Frucht", "das Frühstück", "die Führung", "der Führerschein", "die Fülle", "das Fundament", "die Funkstille", "die Fußgängerzone", "das Fußballspiel", "der Fußgänger", "die Galaxie", "die Galerie", "das Gänseblümchen", "die Garage", "die Garderobe", "der Garten", "der Gashebel", "das Gasthaus", "das Gebäck", "die Geburt", "die Geburtstagsfeier", "das Geburtstagsgeschenk", "die Geduld", "das Gefängnis", "der Gefallen", "das Gefühl", "die Gegensprechanlage", "der Geist", "das Geld", "das Gelände", "die Geltung", "das Gemälde", "der Gemüsegarten", "das Gemüse", "der General", "das Genie", "die Gentechnik", "der Gentleman", "das Gewehr", "das Gewicht", "die Gewohnheit", "der Glanz", "das Glas", "das Gleis", "das Glück", "das Glücksspiel", "die Gnade", "der Goldfisch", "der Gottesdienst", "die Gourmetküche", "das Grab", "die Größe", "der Groll", "der Groschen", "das Grün", "das Grüppchen", "die Grundlage", "der Grundriss", "die Gruppe", "das Gruppenfoto", "die Grütze", "der Gruß", "der Gründer", "das Gulasch", "das Guthaben", "die Gymnastik", "die Gynäkologie", "die Hacke", "das Haferflocken", "der Hafen", "der Hahn", "die Hähnchenbrust", "die Halle", "die Haltestelle", "der Hammer", "die Hand", "das Handy", "die Handynummer", "die Handarbeit", "das Handtuch", "das Handwerk", "die Handynummer", "die Harmonie", "das Haar", "das Haarspray", "die Härte", "die Haselnuss", "die Hauptstadt", "der Hauptbahnhof", "der Hauptgang", "der Hausarzt", "das Hausboot", "das Hausmittel", "die Hausnummer", "der Hauswart", "die Haut", "die Hebamme", "der Hecht", "die Heilung", "die Heimat", "die Heimatstadt", "der Heizkörper", "das Hemd", "der Hengst", "das Herbstwetter", "das Herrenhaus", "das Herz", "die Herzlichkeit", "die Hilfe", "das Himmelbett", "die Himbeere", "die Hinrichtung", "der Hinweis", "die Hochzeit", "der Hof", "die Hoffnung", "der Hocker", "die Höhe", "das Höhlensystem", "das Hören", "das Hotel", "das Huhn", "die Hundeleine", "das Hundehalsband", "die Hütte", "das Iglu", "die Illusion", "die Inflation", "das Inland", "das Instrument", "der Internist", "das Internet", "die Interpretation", "der Inselbewohner", "die Inspiration", "das Interview", "der Intimbereich", "das Inventar", "die Investition", "die Isolation", "die Jahreszeit", "das Jahrhundert", "die Jahrhundertwende", "der Januar", "die Japanisch", "der Jasmin", "das Jenseits", "der Jogurt", "das Jogging", "die Joghurt", "der Joker", "der Journalist", "das Journal", "die Jugend", "der Juni", "das Jungtier", "der Junggeselle", "die Jungfrau", "die Jurte", "das Kabel", "der Käfig", "der Kaiser", "der Kaktus", "die Kälte", "das Kaminfeuer", "der Kämpfer", "die Kanne", "die Kapazität", "das Kapitel", "die Kapsel", "das Karussell", "das Kasino", "der Käse", "die Kassette", "der Kasten", "die Katze", "die Kategorie", "das Kätzchen", "die Kehle", "das Keks", "die Keksdose", "die Kekskrümel", "die Keksmischung", "der Keksriegel", "das Kellergeschoss", "der Keller", "der Kellner", "die Kelter", "die Kette", "die Kiefer", "die Kirsche", "die Kiste", "das Kissen", "der Kitzel", "der Klang", "die Klarheit", "die Klasse", "der Klassiker", "die Klausur", "die Klaue", "das Klima", "das Knie", "das Knochen", "der Knoten", "das Kochbuch", "der Kochtopf", "die Kollision", "der König", "das Königreich", "die Konkurrenz", "das Konzept", "das Konto", "die Konversation", "die Körnung", "der Körper", "der Korb", "das Kostüm", "das Kraftfahrzeug", "der Kraftstoff", "die Kralle", "der Kratzer", "die Kreativität", "das Kreuz", "die Krim", "der Krimi", "die Krise", "die Kristallkugel", "die Krone", "die Kruste", "die Küche", "die Küchenutensilien", "die Kuh", "die Kultur", "der Kunde", "der Kundenservice", "der Kunstkurs", "der Kunsthändler", "das Kunstwerk", "die Kunstausstellung", "die Kunststoff", "das Kupfer", "die Kurve", "die Kutsche", "die Küste", "die Laborarbeit", "das Laboratorium", "der Laden", "der Ladendiebstahl", "die Ladestation", "das Lager", "die Lampe", "die Landschaft", "die Landschaftsmalerei", "der Landsmann", "das Land", "die Landkarte", "der Landtag", "die Landwirtschaft", "die Landsleute", "der Laptop", "das Laster", "der Lastkraftwagen", "der Laternenpfahl", "der Laufsteg", "der Lauf", "der Lautsprecher", "das Lächeln", "die Leber", "das Lebewesen", "die Lebenserwartung", "die Lebensmittel", "die Lebensqualität", "die Lebensversicherung", "die Leere", "das Lehrgespräch", "der Lehrer", "die Leidenschaft", "die Leine", "das Leitungswasser", "die Leistung", "das Leitmotiv", "die Leitung", "der Leitfaden", "das Lektorat", "die Lektüre", "der Lendenwirbel", "das Lenkrad", "die Leuchte", "die Leuchtreklame", "das Licht", "die Lichterkette", "das Lichtschwert", "die Liebhaberei", "das Liebesgedicht", "der Liebhaber", "die Liebe", "die Liederlichkeit", "das Lied", "die Lieferung", "die Lüge", "die Luft", "das Luftschiff", "die Luftverschmutzung", "der Luftwiderstand", "die Luftwaffe", "die Luftmatratze", "die Lüge", "der Lügner", "die Lust", "der Magen", "das Magnetfeld", "der Magnetismus", "die Mahlzeit", "der Mai", "die Maibowle", "die Malerei", "der Maler", "die Malfarbe", "das Malbuch", "der Maler", "die Mammographie", "das Mandat", "die Mandarine", "der Mann", "die Mannschaft", "das Märchen", "die Marge", "der Markt", "die Markierung", "der Marktstand", "der Martini", "die Maschine", "der Masseur", "die Masseuse", "die Massage", "das Material", "das Mathematik", "der Matratzenbezug", "das Maul", "die Maus", "der Mausklick", "das Mauspad", "die Medaille", "die Medien", "die Medikamente", "die Medizin", "das Medizinprodukt", "das Medikament", "der Meeresspiegel", "das Meer", "das Meerschweinchen", "das Meerwasser", "der Mehrwert", "das Mehrfamilienhaus", "das Mehl", "das Mehrgenerationenhaus", "das Mehrzweckzimmer", "die Meile", "die Meisterschaft", "die Menge", "der Mensch", "die Mensa", "das Menü", "das Menü", "der Mentor", "die Messe", "der Messerblock", "das Metall", "die Metamorphose", "die Methode", "die Metro", "der Mikrochip", "die Mikrowelle", "die Milch", "der Milchkaffee", "der Milchshake", "die Milchstraße", "die Milde", "der Militär", "die Million", "die Minderheit", "das Mineral", "die Mineralwasser", "das Minus", "die Minute", "der Missbrauch", "die Missgeburt", "das Missgeschick", "die Mission", "die Mitbewohnerin", "das Mitleid", "die Mitte", "der Mittelpunkt", "die Mitteilung", "die Mitwirkung", "das Möbelhaus", "die Möwe", "der Moment", "das Mondlicht", "der Montag", "der Morgen", "der Motor", "die Mühle", "das Müsli", "der Museumsbesuch", "die Musik", "der Musiker", "die Mütze", "die Nachbarschaft", "der Nachbar", "die Nachhilfe", "die Nacht", "die Nachtclub", "das Nachtleben", "die Nachtruhe", "die Nachspeise", "die Nachricht", "das Nachrichten", "die Nähe", "die Nägel", "der Name", "das Namensschild", "die Narbe", "die Natur", "die Naturkatastrophe", "die Navigation", "das Netz", "die Neugierde", "das Niveau", "die Nahrung", "das Notizbuch", "der Notruf", "der November", "die Nudel", "das Nutztier", "die Oase", "das Obst", "die Oberschule", "das Obergeschoss", "die Oberschenkel", "die Oberstufe", "die Obrigkeit", "das Ohr", "das Öl", "die Öffentlichkeit", "die Offenheit", "die Offenbarung", "der Ofen", "die Ohnmacht", "die Oktoberfest", "das Oktoberfest", "die Oliven", "der Onkel", "das Opernhaus", "die Oper", "die Operette", "die Orangen", "die Ordnung", "das Orchester", "die Orgel", "die Orientierung", "der Ort", "die Osterzeit", "der Ostern", "die Osterhasen", "die Ostsee", "die Ostern", "die Ovation", "der Palast", "die Palme", "der Palast", "die Panne", "der Papagei", "der Papierkorb", "das Papier", "die Paprika", "die Parade", "die Parfümerie", "der Park", "der Parkplatz", "die Party", "das Patent", "das Patenkind", "die Pause", "der Pavian", "das Pferd", "die Pflicht", "das Pflaster", "die Pflege", "die Pflegeeinrichtung", "die Pflicht", "der Pfeffer", "das Pferd", "die Pflanze", "die Pflanzung", "der Pilot", "die Pilotin", "die Pille", "das Pils", "das Pinten", "die Pizza"
+                // ...
+            ]
+        };
+        var numerovisto = [];
+        
+        function verbo() {
+            lmaterno = verbos160.es;
+            lobjetivo = verbos160.de;
+            asignarpalabra()
+        }
+        function sustantivos() {
+            lmaterno = sustantivos1000.es;
+            lobjetivo = sustantivos1000.de;
+            asignarpalabra()
+        }
+        function adjetivos() {
+            lmaterno = verbos160.es;
+            lobjetivo = verbos160.de;
+            asignarpalabra()
+        }
+        function advervios() {
+            lmaterno = advervio.es;
+            lobjetivo = advervio.de;
+            asignarpalabra()
+        }
+
+
+        function genpalabra(lista) {
+            var numero= Math.floor(Math.random()*lista.length)
+            var limite = 1
+            while (numerovisto.includes(numero) && limite !=10) {
+                numero = Math.floor(Math.random()*lista.length)
+                limite++
+                //console.log(limite)
+            }
+            numerovisto.push(numero)
+            //console.log(numerovisto)
+            return numero
+        }
+
+        function asignarpalabra() {
+            var numero = genpalabra(lmaterno)
+            document.getElementById("p1").innerHTML = lmaterno[numero]
+            document.getElementById("p11").innerHTML = lobjetivo[numero]
+            var numero = genpalabra(lmaterno)
+            document.getElementById("p2").innerHTML = lmaterno[numero]
+            document.getElementById("p12").innerHTML = lobjetivo[numero]
+            var numero = genpalabra(lmaterno)
+            document.getElementById("p3").innerHTML = lmaterno[numero]
+            document.getElementById("p13").innerHTML = lobjetivo[numero]
+            var numero = genpalabra(lmaterno)
+            document.getElementById("p4").innerHTML = lmaterno[numero]
+            document.getElementById("p14").innerHTML = lobjetivo[numero]
+            var numero = genpalabra(lmaterno)
+            document.getElementById("p5").innerHTML = lmaterno[numero]
+            document.getElementById("p15").innerHTML = lobjetivo[numero] 
+        }
+
+        //funcion para leer
+        document.getElementById("palabraaleman").addEventListener("click", function(event) {
+            var selectedWord = event.target.innerText;
+            leer(selectedWord, "de");
+        });
+
+        function leer(params, idioma) {
+            var speechUtterance = new SpeechSynthesisUtterance(params);
+            speechUtterance.rate = 1;
+            speechUtterance.lang = idioma;
+            //speechUtterance.voice = speechSynthesis.getVoices()[1];
+            speechSynthesis.speak(speechUtterance);// configuero loa parametos de velocidad
+                        
+        } 
+
+       
+
+        //funcion para auto click en las palabras alemanas 
+        function autoClick() {
+            var palabrasAleman = document.querySelectorAll("#palabraaleman div");
+            var contador = 0;
+            
+            var interval = setInterval(function() {
+                palabrasAleman[contador].click();
+                contador++;
+                
+                if (contador === 5) {
+                    clearInterval(interval);
+                    document.querySelector("button[type='button']").click();
+                }
+            }, 2000);
+        }
+
+        //autoClick();
+
+
+        function contaraciertos(params) {
+            
+        }
+
+        function mostrarConjugaciones() {
+            var verboAleman = document.getElementById("p11").innerHTML;
+            var conjugaciones = conjugateVerboAleman(verboAleman);
+            var mensaje = "Conjugaciones de " + verboAleman + ":\n\n";
+            for (var i = 0; i < conjugaciones.length; i++) {
+                mensaje += conjugaciones[i] + "\n";
+            }
+            alert("en desarrollo")
+            //alert(mensaje);
+        }
+
+        function conjugateVerboAleman(verbo) {
+            // Aquí iría la lógica para conjugar el verbo alemán
+            // Puedes implementarla o utilizar una librería externa para conjugaciones verbales en alemán
+            // Por ejemplo, puedes utilizar la librería "german-verb-conjugator" de npm
+            // Aquí te muestro un ejemplo de cómo utilizarla:
+            //var conjugaciones = germanVerbConjugator.conjugate(verbo);
+
+            //return conjugaciones;
+
+            // En este caso, como no tengo acceso a la librería, simplemente devolveré un array vacío
+            return [];
+        }
+
+        // Luego, puedes llamar a la función mostrarConjugaciones en el lugar adecuado de tu código
+        // Por ejemplo, puedes agregar un botón y asignarle el evento onclick:
+        // <button type="button" onclick="mostrarConjugaciones()" class="btn">Mostrar Conjugaciones</button>
+
+
+
+
+        // Función para capturar el evento de apagado de la pantalla
+        function handleScreenOff() {
+            // Prevenir que la pantalla se apague
+            const preventScreenOff = () => {
+                // Realizar acciones para prevenir el apagado de la pantalla
+                // Código para simular un click cada 30 segundos en un elemento div
+                function simulateClick() {
+                    var divElement = document.createElement("div");
+                    divElement.style.position = "fixed";
+                    divElement.style.top = "0";
+                    divElement.style.left = "0";
+                    divElement.style.width = "10px";
+                    divElement.style.height = "10px";
+                    divElement.style.backgroundColor = "black";
+                    document.body.appendChild(divElement);
+
+                    setInterval(function() {
+                        divElement.click();
+                    }, 60000);
+                }
+
+                // Llamar a la función para simular el click cada 30 segundos
+                simulateClick();
+                // Por ejemplo, puedes reproducir un sonido o mostrar una notificación
+                console.log("La pantalla se está apagando, previniendo el apagado...");
+            };
+
+            // Agregar el evento de apagado de la pantalla
+            document.addEventListener("visibilitychange", () => {
+                if (document.visibilityState === "hidden") {
+                    preventScreenOff();
+                }
+            });
+        }
+
+        // Llamar a la función para capturar el evento de apagado de la pantalla
+        handleScreenOff();
+
+        // Función para almacenar los datos de la API de speech en el caché del navegador
+        function almacenarDatosEnCache(datos) {
+            // Verificar si el navegador soporta el almacenamiento en caché
+            if ('caches' in window) {
+                // Abrir el caché
+                caches.open('speech-api-cache').then(function(cache) {
+                    // Almacenar los datos en el caché
+                    cache.put('speech-api-data', new Response(JSON.stringify(datos)));
+                });
+            }
+        }
+
+        //console.log(genpalabra(verbos160))
+        console.log(numerovisto)
+    </script>
+</body>
+</html>
